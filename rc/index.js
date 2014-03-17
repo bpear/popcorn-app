@@ -44,6 +44,20 @@ io.sockets.on('connection', function(socket){
     socket.emit('movie', movie);
   });
 
+  socket.on('search', function(searchTerm) {
+
+    var searchCollection = new Scrapper([], {
+        keywords: searchTerm,
+        genre: null
+    });
+
+    searchCollection.fetch();
+
+    searchCollection.on('add', function(movie){
+      socket.emit('movie', movie);
+    });
+  });
+
   socket.on('play', function(data){
     var movie = movies.find(function(model) { return model.get('torrent') === data.torrent; });
     console.log(movie.get('torrent'));

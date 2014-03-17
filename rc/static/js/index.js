@@ -1,18 +1,18 @@
 ;(function(){
 
-var socket = io.connect();
+window.socket = io.connect();
 
-var $main = $('#main');
+var $main   = $('#main'),
+    $search = $('#search');
 
-/*
-var hammer = Hammer(document.getElementById('main'), {
-  prevent_default: true
+$search.keypress(function(e) {
+  if (e.which == 13) {
+    $main.empty();
+    socket.emit('search', $search.val());
+    $search.blur();
+    e.preventDefault();
+  }
 });
-
-hammer.on("swipeleft", function() {
-    alert('you swiped left!');
-});
-*/
 
 socket.on('movie', function(movie){
 
