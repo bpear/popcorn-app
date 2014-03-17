@@ -35,7 +35,7 @@ function bindListeners() {
 function showOverlay(movie) {
 
     // Set background image
-    $overlay.css({ 'background': ' rgba(0,0,0,.1) url(' + movie.backdrop + ') no-repeat center center'});
+    $overlay.css({ 'background-image': 'url(' + movie.backdrop + ')'});
 
     var info = '<h1>' + movie.title + '</h1>' +
       '<h3>' + movie.year + ' &bull; ' + movie.runtime + 'min</h3>' +
