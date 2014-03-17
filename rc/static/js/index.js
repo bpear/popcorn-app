@@ -3,7 +3,8 @@
 window.socket = io.connect();
 
 var $main   = $('#main'),
-    $search = $('#search');
+    $search = $('#search'),
+    $loader = $('#loader');
 
 // Show the detail overlay
 var $overlay = $('#overlay');
@@ -13,6 +14,7 @@ function bindListeners() {
   /* Search */
   $search.keypress(function(e) {
     if (e.which == 13) {
+      $loader.show();
       $main.empty();
       socket.emit('search', $search.val());
       $search.blur();
@@ -22,6 +24,8 @@ function bindListeners() {
 
   /* WebSocket events */
   socket.on('movie', function(movie){
+    $loader.hide();
+
     var $img = $('<img />').attr('src', movie.bigImage).data(movie);
 
     $main.append($img);
