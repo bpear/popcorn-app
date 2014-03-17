@@ -40,7 +40,7 @@ function showOverlay(movie) {
     var info = '<h1>' + movie.title + '</h1>' +
       '<h3>' + movie.year + ' &bull; ' + movie.runtime + 'min</h3>' +
       '<p class="description">' + movie.synopsis + '</p>' +
-      '<a class="back" href="#">BACK</a><a class="watch-now" href="#">WATCH NOW</a>';
+      '<a class="back" href="javascript:void(0);">BACK</a><a class="watch-now" href="javascript:void(0);">WATCH NOW</a>';
 
     $info.html(info);
     $overlay.show();
