@@ -47,10 +47,12 @@ function showOverlay(movie) {
 
     $info.find('.watch-now').click(function(){
       socket.emit('play', movie);
+      event.preventDefault();
     });
 
     $info.find('.back').click(function() {
       closeOverlay();
+      event.preventDefault();
     });
 }
 
