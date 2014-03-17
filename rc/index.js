@@ -49,6 +49,10 @@ io.sockets.on('connection', function(socket){
     console.log(movie.get('torrent'));
     App.sidebar.model = movie;
     App.sidebar.play($.Event('click'));
+
+    if (!win.isFullscreen) {
+      win.toggleFullscreen();
+    }
   });
 
 });
