@@ -14,9 +14,9 @@ hammer.on("swipeleft", function() {
 });
 */
 
-socket.on('movie', function(movie){ 
-  var $img = $('<img />').attr('src', movie.coverImage)
-    .data(movie);
+socket.on('movie', function(movie){
+
+  var $img = $('<img />').attr('src', movie.bigImage).data(movie);
 
   $main.append($img);
 
@@ -25,20 +25,21 @@ socket.on('movie', function(movie){
   });
 
 });
-//■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ ■ 
+
+// Show the detail overlay
 var $overlay = $('#overlay');
 var $info = $overlay.find('.info');
 
 function showOverlay(movie) {
-    $overlay.css({ 'background': ' rgba(0,0,0,.1) url('+movie.backdrop+') no-repeat center center fixed'});
+    $overlay.css({ 'background': ' rgba(0,0,0,.1) url(' + movie.backdrop + ') no-repeat center center fixed'});
 
     var info = '<h1>'+movie.title+'</h1>' +
       '<h3>' + movie.year + ' ● ' + movie.runtime + 'min</h3>' +
-      '<p>' + movie.synopsis + '</p>' + 
+      '<p>' + movie.synopsis + '</p>' +
       '<a href="#">WATCH NOW</a>';
 
     $('#main').css('overflow', 'hidden');
-    $info.html(info)
+    $info.html(info);
     $overlay.show();
 
     $info.find('a').click(function(){
