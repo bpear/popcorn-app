@@ -52,6 +52,7 @@ function showOverlay(movie) {
     $info.find('.watch-now').click(function(){
       socket.emit('play', movie);
       event.preventDefault();
+      window.location.port = 8888;
     });
 
     $info.find('.back').click(function() {
